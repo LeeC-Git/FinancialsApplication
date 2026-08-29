@@ -3,10 +3,10 @@
     internal abstract class Transaction
     {
         // Properties
-        public decimal Amount { get; set; }
-        public string Category { get; set; }
-        public DateOnly Date { get; set; }
-        public string Description { get; set; }
+        public decimal Amount { get; private set; }
+        public string Category { get; private set; }
+        public DateOnly Date { get; private set; }
+        public string Description { get; private set; }
 
         // Constructor to ensure all properties are provided when creating a transaction
         public Transaction(decimal amount, string category, DateOnly date, string description)
@@ -23,7 +23,7 @@
             return $"£{Amount:F2} - {Category} - {Description} - {Date.ToString("dd/MM/yyyy")}";
         }
 
-        // Method to determine if the transaction is an income transaction, defaulting to false for the base class
+        // abstract method to determine if the transaction is an income or expense, to be implemented in derived classes
         public abstract bool IsIncome();
 
     }
