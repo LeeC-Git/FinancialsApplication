@@ -6,7 +6,7 @@
         public string Name { get; }
 
         // Private field to hold the list of transactions associated with the account, initialized as an empty list
-        private readonly List<Transaction> Transactions = new();
+        private readonly List<Transaction> transactions = new();
 
         // Constructor ensuring name is provided when creating an account
         public Account(string name)
@@ -17,13 +17,13 @@
         // Methods to add transactions, retrieve transactions, and calculate the account balance
         public void AddTransaction(Transaction transaction)
         {
-            Transactions.Add(transaction);
+            transactions.Add(transaction);
         }
 
         // Method to retrieve the list of transactions for the account
         public List<Transaction> GetTransactions()
         {
-            return Transactions;
+            return transactions;
         }
 
         // Method to calculate the current balance by summing all transaction amounts
@@ -31,7 +31,7 @@
         {
             decimal total = 0;
 
-            foreach (var t in Transactions)
+            foreach (var t in transactions)
             {
                 if (t.IsIncome())
                 {

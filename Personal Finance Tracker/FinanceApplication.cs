@@ -2,9 +2,9 @@
 {
     internal class FinanceApplication
     {
-        // Private static variable to hold the currently selected account, initialized to null, and a list to hold all created accounts
-        private static Account currentAccount = null;
-        private static List<Account> accounts = new();
+        // Private variable to hold the currently selected account, initialized to null, and a list to hold all created accounts
+        private Account currentAccount = null;
+        private List<Account> accounts = new();
 
         private readonly ILogger logger;
 
