@@ -6,11 +6,14 @@
         private static Account currentAccount = null;
         private static List<Account> accounts = new();
 
+        // Private readonly fields for the logger and account persistence, which are injected through the constructor
+        private readonly IAccountPersistence persistence;
         private readonly ILogger logger;
-
-        public FinanceApplication(ILogger logger)
+        
+        public FinanceApplication(ILogger logger, IAccountPersistence persistence)
         {
             this.logger = logger;
+            this.persistence = persistence;
         }
 
         public void Run() 
@@ -58,6 +61,24 @@
                         break;
 
                     case "6":
+                        persistence.Save(accounts);
+                        Console.WriteLine("Accounts saved successfully!");
+                        break;
+
+                    case "7":
+                        accounts = persistence.Load();
+
+                        if (accounts.Count == 0)
+                        {
+                            Console.WriteLine("No accounts found to load.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Accounts loaded successfully!");
+                        }
+                        break;
+
+                    case "8":
 
                         running = false;
                         break;
@@ -79,7 +100,9 @@
             Console.WriteLine("3. Add Transaction");
             Console.WriteLine("4. View Transactions");
             Console.WriteLine("5. View Balance");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("6. Save Accounts");
+            Console.WriteLine("7. Load Accounts");
+            Console.WriteLine("8. Exit");
         }
 
         // Creates a new account by getting user input for the name and returns the created account object

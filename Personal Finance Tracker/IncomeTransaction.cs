@@ -8,6 +8,11 @@
         {
         }
 
+        // Parameterless constructor for serialization/deserialization
+        public IncomeTransaction() : base()
+        {
+        }
+
         // Overriden method to indicate that this transaction is an income transaction
         public override bool IsIncome()
         {
