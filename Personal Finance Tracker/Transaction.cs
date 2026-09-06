@@ -43,7 +43,7 @@ namespace Personal_Finance_Tracker
             return $"£{Amount:F2} - {Category} - {Description} - {Date.ToString("dd/MM/yyyy")}";
         }
 
-        // Method to determine if the transaction is an income transaction, defaulting to false for the base class
+        // abstract method to determine if the transaction is an income or expense, to be implemented in derived classes
         public abstract bool IsIncome();
 
     }
