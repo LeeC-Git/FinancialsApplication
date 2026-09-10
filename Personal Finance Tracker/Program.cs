@@ -1,18 +1,22 @@
-﻿namespace Personal_Finance_Tracker
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Personal_Finance_Tracker
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            // You can switch between different logger implementations by commenting/uncommenting the appropriate line below.
-            ILogger logger = new ConsoleLogger();
-            // ILogger logger = new SilentLogger();
+         
+            var serviceCollection = new ServiceCollection();
 
-            // Creates an instance of the JsonAccountPersistence class, which implements the IAccountPersistence interface, to handle saving and loading account data in JSON format.
-            IAccountPersistence persistence = new JsonAccountPersistence(logger);
+            serviceCollection.AddSingleton<ILogger, ConsoleLogger>();
+            serviceCollection.AddSingleton<IAccountPersistence, JsonAccountPersistence>();
 
-            // Creates an instance of the FinanceApplication class, passing in the logger and persistence instances.
-            var app = new FinanceApplication(logger, persistence);
+            serviceCollection.AddTransient<FinanceApplication>();
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var app = serviceProvider.GetRequiredService<FinanceApplication>();
 
             app.Run();
         }
