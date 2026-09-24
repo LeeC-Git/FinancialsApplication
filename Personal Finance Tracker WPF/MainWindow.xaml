@@ -7,20 +7,21 @@
         mc:Ignorable="d"
         Title="Personal Finance Tracker" Height="800" Width="600"
         ResizeMode="CanResize">
-    <Grid>
+  <Border Background="#FAFAFA" BorderThickness="10">
+        <Grid>
 
-        <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"
-                Background="#F5F5F5"
+                Background="#E8EAF6"
                 Padding="15">
             <StackPanel>
                 <TextBlock Text="ACCOUNTS"
-                           FontSize="18"
+                           FontSize="20"
                            FontWeight="Bold"
                            Margin="0 0 0 10"
                            Foreground="#333">
@@ -30,21 +31,29 @@
                          SelectionChanged="AccountsListLeft_SelectionChanged"
                          BorderThickness="0">
                     <ListBoxItem Content="Checking"
+                                 FontSize="14"
+                                 FontWeight="SemiBold"
                                  Padding="10 6"
                                  Margin="0 2" 
                                  Background="#FFFFFF"/>
 
                     <ListBoxItem Content="Savings"
+                                 FontSize="14"
+                                 FontWeight="SemiBold"
                                  Padding="10 6"
                                  Margin="0 2"
                                  Background="#FFFFFF"/>
 
                     <ListBoxItem Content="Credit Card"
+                                 FontSize="14"
+                                 FontWeight="SemiBold"
                                  Padding="10 6"
                                  Margin="0 2"
                                  Background="#FFFFFF"/>
 
                     <ListBoxItem Content="Investment"
+                                 FontSize="14"
+                                 FontWeight="SemiBold"
                                  Padding="10 6"
                                  Margin="0 2"
                                  Background="#FFFFFF"/>
@@ -53,35 +62,38 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="2" Padding="20">
-            <StackPanel>
-                <TextBlock Text="Account: (none selected)"
+            <Border Grid.Column="2" Padding="20"
+                Background="#E8EAF6">
+                <StackPanel>
+                    <TextBlock Text="Account: (none selected)"
                            x:Name="AccountNameText"
                            FontSize="20"
                            FontWeight="Bold"
                            Margin="0 0 0 20"/>
 
-                <TextBlock Text="Balance: "
+                    <TextBlock Text="Balance: "
+                           FontWeight="SemiBold"
                            x:Name="AccountBalanceText"
-                           FontSize="16"
+                           FontSize="18"
                            Margin="0 0 0 20"/>
 
-                <StackPanel>
-                    <TextBlock Text="Transactions"
-                               FontSize="16"
+                    <StackPanel>
+                        <TextBlock Text="Transactions"
+                               FontSize="18"
                                FontWeight="Bold"
                                Margin="0 0 0 10"/>
 
-                    <ListBox x:Name="TransactionsList">
-                        
-                        <ListBoxItem Content="No transactions available"/>
-                    </ListBox>
-                    
+                        <ListBox x:Name="TransactionsList"
+                                 FontSize="16">
+
+                            <ListBoxItem Content="No transactions available"/>
+                        </ListBox>
+
+                    </StackPanel>
+
                 </StackPanel>
 
-            </StackPanel>
-            
-        </Border>
-        
-    </Grid>
+            </Border>
+        </Grid>
+  </Border>
 </Window>
