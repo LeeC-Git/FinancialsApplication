@@ -19,76 +19,35 @@
         <Border Grid.Column="0"
                 Background="#E8EAF6"
                 Padding="15">
+            
             <StackPanel>
-                <TextBlock Text="ACCOUNTS"
-                           FontSize="20"
-                           FontWeight="Bold"
-                           Margin="0 0 0 10"
-                           Foreground="#333">
-                </TextBlock>
-
-                <ListBox x:Name="AccountsListLeft"
-                         SelectionChanged="AccountsListLeft_SelectionChanged"
-                         BorderThickness="0">
-                    <ListBoxItem Content="Checking"
-                                 FontSize="14"
-                                 FontWeight="SemiBold"
-                                 Padding="10 6"
-                                 Margin="0 2" 
-                                 Background="#FFFFFF"/>
-
-                    <ListBoxItem Content="Savings"
-                                 FontSize="14"
-                                 FontWeight="SemiBold"
-                                 Padding="10 6"
-                                 Margin="0 2"
-                                 Background="#FFFFFF"/>
-
-                    <ListBoxItem Content="Credit Card"
-                                 FontSize="14"
-                                 FontWeight="SemiBold"
-                                 Padding="10 6"
-                                 Margin="0 2"
-                                 Background="#FFFFFF"/>
-
-                    <ListBoxItem Content="Investment"
-                                 FontSize="14"
-                                 FontWeight="SemiBold"
-                                 Padding="10 6"
-                                 Margin="0 2"
-                                 Background="#FFFFFF"/>
-                </ListBox>
-                
+                    <TextBlock Text="ACCOUNTS" FontSize="20" FontWeight="Bold" Margin="0 0 0 10" Foreground="#333"/>
+                    <ListBox ItemsSource="{Binding Accounts}" 
+                             DisplayMemberPath="Name" 
+                             SelectedItem="{Binding SelectedAccount}" 
+                             BorderThickness="0">
+                    </ListBox>
             </StackPanel>
+            
         </Border>
-
-            <Border Grid.Column="2" Padding="20"
-                Background="#E8EAF6">
+            <Border Grid.Column="2" Padding="20" Background="#E8EAF6">
                 <StackPanel>
-                    <TextBlock Text="Account: (none selected)"
+                    <TextBlock Text="{Binding SelectedAccount.Name, FallbackValue='Account: (none selected)'}"
                            x:Name="AccountNameText"
                            FontSize="20"
                            FontWeight="Bold"
                            Margin="0 0 0 20"/>
 
-                    <TextBlock Text="Balance: "
+                    <TextBlock Text="{Binding SelectedAccountBalance, StringFormat='Balance: {0:C2}'}"
                            FontWeight="SemiBold"
                            x:Name="AccountBalanceText"
                            FontSize="18"
                            Margin="0 0 0 20"/>
 
                     <StackPanel>
-                        <TextBlock Text="Transactions"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               Margin="0 0 0 10"/>
-
-                        <ListBox x:Name="TransactionsList"
-                                 FontSize="16">
-
-                            <ListBoxItem Content="No transactions available"/>
+                        <TextBlock Text="Transactions"  FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <ListBox x:Name="TransactionsList" ItemsSource="{Binding SelectedAccount.Transactions}" DisplayMemberPath="DisplayText" FontSize="16">
                         </ListBox>
-
                     </StackPanel>
 
                 </StackPanel>
