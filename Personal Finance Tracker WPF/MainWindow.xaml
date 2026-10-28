@@ -27,7 +27,8 @@
                              SelectedItem="{Binding SelectedAccount}" 
                              BorderThickness="0">
                     </ListBox>
-            </StackPanel>
+                    <Button x:Name="AccountButton" Content="Edit Accounts" Command="{Binding EditAccountsCommand}"/>
+                </StackPanel>
             
         </Border>
             <Border Grid.Column="2" Padding="20" Background="#E8EAF6">
@@ -49,7 +50,7 @@
                         <ListBox x:Name="TransactionsList" ItemsSource="{Binding SelectedAccount.Transactions}" DisplayMemberPath="DisplayText" FontSize="16">
                         </ListBox>
                     </StackPanel>
-
+                    <Button x:Name="TransactionButton" Content="Edit Transactions" Command="{Binding EditTransactionsCommand}"/>
                 </StackPanel>
 
             </Border>
