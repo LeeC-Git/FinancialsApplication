@@ -3,5 +3,7 @@
     internal interface IAccountService
     {
         List<Account> GetAccounts();
+        void SaveAccounts(IEnumerable<Account> accounts);
+
     }
 }

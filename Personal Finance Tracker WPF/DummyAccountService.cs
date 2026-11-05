@@ -20,5 +20,10 @@ namespace Personal_Finance_Tracker_WPF
                 })
             };
         }
+
+        public void SaveAccounts(IEnumerable<Account> accounts) 
+        { 
+            // Just here so it still compiles
+        }
     }
 }
